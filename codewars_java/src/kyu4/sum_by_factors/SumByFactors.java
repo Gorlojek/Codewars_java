@@ -8,7 +8,6 @@ public class SumByFactors {
         int[] primeNums = new int[0];
         for (int i = 0; i < l.length; i++) {
             int temp = l[i];
-            System.out.print(temp + " ");
             for (int j = 2; j <= Math.abs(temp); j++) {
                 if (temp % j == 0) {
                     if (isPrime(j)) {
@@ -20,16 +19,13 @@ public class SumByFactors {
         }
         Arrays.sort(primeNums);
         primeNums = removeDuplicates(primeNums);
-        System.out.println(Arrays.toString(primeNums));
         int[] sums = new int[0];
-
         for (int i = 0; i < primeNums.length; i++) {
             int tempsum = 0;
             for (int j = 0; j < l.length; j++) {
                 if (l[j] % primeNums[i] == 0) {
                     tempsum += l[j];
                 }
-
             }
             sums = addToArr(sums, tempsum);
         }
@@ -40,7 +36,6 @@ public class SumByFactors {
             sb.append(sums[i] + ")");
 
         }
-        System.out.println(sb);
         return sb.toString();
     }
 
@@ -54,7 +49,6 @@ public class SumByFactors {
         int sqrt = (int) Math.sqrt(number) + 1;
         for (int i = 2; i < sqrt; i++) {
             if (number % i == 0) {
-
                 return false;
             }
         }
@@ -65,25 +59,19 @@ public class SumByFactors {
         int[] clearTab = new int[1];
         clearTab[0] = origArray[0];
         for (int i = 0; i < origArray.length-1; i++) {
-
             if (origArray[i] != origArray[i + 1]) {
                 clearTab = addToArr(clearTab, origArray[i+1]);
-            }
-
-
+           }
         }
-
-
         return clearTab;
     }
-
 
     public static void main(String[] args) {
         int[] lst = new int[]{12, 15};
         int[] lst2 = new int[]{107, 158, 204, 100, 118, 123, 126, 110, 116, 100};
         int[] lst3 = new int[]{424, 246, 250, -59, 387, 278, 424, -84, -86, 219, 145, 428, 228, 176, 465, 119, 243};
-        sumOfDivided(lst);
-//       sumOfDivided(lst2);
-//        sumOfDivided(lst3);
+        System.out.println(sumOfDivided(lst));
+        System.out.println(sumOfDivided(lst2));
+        System.out.println(sumOfDivided(lst3));
     }
 }
